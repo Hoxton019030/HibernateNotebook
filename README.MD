@@ -143,7 +143,7 @@ Transcation物件
 session.delete(companyBean)
 
 <h3>saveOrUpdate()</h3>
-將Transient,Detached,轉換成Persistent
+將Transient,Detached,轉換成Persistent<br>
 <b>update是將分離物件轉換成永續物件，不是新增東西！</b>
 <ul>
 <li>如果方法本身已經是Persistent則不做任何事</li>
