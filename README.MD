@@ -23,6 +23,7 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
 	    </class>
 	</hibernate-mapping>
 //*****************************************************************************
+
 這樣hibernate啟動時，會先去讀取hibernate.cfg.xml，並通過<mapping去檢查JAVA物件之間的對應關係
 
 
@@ -30,6 +31,8 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
 	(3)利用JPA，直接定義在JAVA裡
 
 Step4 程式裡這樣撰寫
-StandardServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-SesssionFactory factory =new MetadataSource(serviceRegistry).buildMetadata().buildSessionFactory();
+	StandardServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+	SesssionFactory factory =new MetadataSource(serviceRegistry).buildMetadata().buildSessionFactory();
+
+
 
