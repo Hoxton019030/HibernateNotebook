@@ -24,7 +24,7 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
 	</hibernate-mapping>
 //*****************************************************************************
 
-這樣hibernate啟動時，會先去讀取hibernate.cfg.xml，並通過<mapping去檢查JAVA物件之間的對應關係
+這樣hibernate啟動時，會先去讀取hibernate.cfg.xml，並通過<mapping>去檢查JAVA物件之間的對應關係
 
 
 	(2)利用Annotaion，直接定義在JAVA裡

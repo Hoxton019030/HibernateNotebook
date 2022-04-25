@@ -9,9 +9,9 @@
 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=hibernateDB</property>
 		<property name="hibernate.connection.username">Hoxton</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServer2016Dialect</property>
-        
-     
-	    <!-- 後面學到 current Session 再打開 -->
+
+
+		<!-- 後面學到 current Session 再打開 -->
 		<property name="current_session_context_class">thread</property>
 
 		<!-- 是否在 console 顯示經由 hibernate 產生的 SQL 指令 -->
@@ -25,18 +25,18 @@
 
 		<!-- setting auto generate table: update/validate -->
 		<!-- <property name="hbm2ddl.auto">update</property> -->
-
+		<mapping resource="tw/hibernatedemo/model/CompanyBean.hbm.xml" />
 		<!-- source mapping in xml file -->
 
 		<!-- class mapping -->
-		
-		<mapping class="tw.hibernatedemo.model.Department" />
-		<mapping class="tw.hibernatedemo.model.InstructorDetail" />
-		<mapping class="tw.hibernatedemo.model.Instructor" />
-		<mapping class="tw.hibernatedemo.model.BookUsers" />
-		<mapping class="tw.hibernatedemo.model.Books" />
-		<mapping class="tw.hibernatedemo.model.Friend" />
-		<mapping class="tw.hibernatedemo.model.MyGroup" />
-		
+
+<!-- 		<mapping class="tw.hibernatedemo.model.Department" /> -->
+<!-- 		<mapping class="tw.hibernatedemo.model.InstructorDetail" /> -->
+<!-- 		<mapping class="tw.hibernatedemo.model.Instructor" /> -->
+<!-- 		<mapping class="tw.hibernatedemo.model.BookUsers" /> -->
+<!-- 		<mapping class="tw.hibernatedemo.model.Books" /> -->
+<!-- 		<mapping class="tw.hibernatedemo.model.Friend" /> -->
+<!-- 		<mapping class="tw.hibernatedemo.model.MyGroup" /> -->
+
 	</session-factory>
 </hibernate-configuration>

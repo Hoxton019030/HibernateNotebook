@@ -1,16 +1,35 @@
 package tw.hibernatedemo.action;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import tw.hibernatedemo.model.CompanyBean;
+
 public class DemoCompanyBeanActionEx1 {
 
-	public DemoCompanyBeanActionEx1() {
-		StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.hbm.xml")
+	public static void main(String[] args) {
+
+		StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure()
 				.build();
-		SessionFactory session = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+		SessionFactory factory = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+
+		// 從連線池拿到連線
+		Session session = factory.openSession();
+		// hibernate的東西一定是在交易裡面
+		session.beginTransaction();
+
+		CompanyBean com1 = new CompanyBean();
+		com1.setCompanyId(1002);
+		com1.setCompanyName("Tesla");
+
+		session.save(com1);
+
+		session.getTransaction().commit();
+		session.close();
+		factory.close();
 	}
 
 }
