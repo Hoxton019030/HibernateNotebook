@@ -96,7 +96,22 @@ SesssionFactory功能　 ※參考tw.hibernatedemo.util.HibernateUtil
 		<property name="current_session_context_class">thread</property>
 		否則程式會丟出 No CurrentSessionContext configured的錯誤訊息
 
+
+
+*****************************************************************************
+Transcation物件
+	-是Hibernate提供的資料庫交易介面，裡面覆蓋了不同廠商資料庫間的交易機制(Dialact)
+	-對多個表格的CRUD都一定要在同一個session
+	-Transcation交易的建立方式 ※參考 tw.hibernatedemo.action.DemoDepartmentActionEx5 
+		透過session啟用transcation
+		(1).Transcation tx = session.beginTranscation();
+		透過session物件取得現存的Transctaion物件
+		(2).Transcation tx = session.getTransaction();
+		透過Transcation物件結束transcation
+		(3).tx.commit();
+		    tx.rollback();
 	
+	 
 
 	
 
