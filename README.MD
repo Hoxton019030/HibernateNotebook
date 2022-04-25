@@ -111,6 +111,7 @@ Transcation物件
 		(3).tx.commit();
 		    tx.rollback();
 	
+<h1>永續類別之物件的生命週期</h1>
 	 
 ![image](https://user-images.githubusercontent.com/98711945/165159111-b73023a7-0fa5-45a3-9006-bd4246eea661.png)
 
