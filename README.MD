@@ -41,7 +41,7 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
 
 Step4 程式裡這樣撰寫
 	StandardServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-	SesssionFactory factory =new MetadataSource(serviceRegistry).buildMetadata().buildSessionFactory();
+		SesssionFactory factory =new MetadataSource(serviceRegistry).buildMetadata().buildSessionFactory();
 
 
 
