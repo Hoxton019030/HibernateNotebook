@@ -138,5 +138,17 @@ Transcation物件
 <li>執行查詢語句以前</li>
 </ol>
 
+<h3>delete()</h3>
+用來刪除資料用的
+session.delete(companyBean)
+
+<h3>saveOrUpdate()</h3>
+將Transient,Detached,轉換成Persistent
+<ul>
+<li>如果方法本身已經是Persistent則不做任何事</li>
+<li>如果方法參數沒有設定PK值或是利用PK值無法從資料庫載入物件，則會執行save()方法</li>
+<li>如果不是上述狀況，則執行update()方法</li>
+</ul>
+
 
 
