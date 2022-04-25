@@ -144,6 +144,7 @@ session.delete(companyBean)
 
 <h3>saveOrUpdate()</h3>
 將Transient,Detached,轉換成Persistent
+<b>update是將分離物件轉換成永續物件，不是新增東西！</b>
 <ul>
 <li>如果方法本身已經是Persistent則不做任何事</li>
 <li>如果方法參數沒有設定PK值或是利用PK值無法從資料庫載入物件，則會執行save()方法</li>
