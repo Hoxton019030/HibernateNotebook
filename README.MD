@@ -112,10 +112,31 @@ Transcation物件
 		    tx.rollback();
 	
 <h1>永續類別之物件的生命週期</h1>
-<button>123</button>
+
 	 
 ![image](https://user-images.githubusercontent.com/98711945/165159111-b73023a7-0fa5-45a3-9006-bd4246eea661.png)
 
-	
+<h1>如何從資料庫獲得資料</h1>
+
+	Session的get()跟load()都可以以依主鍵(pk)去取得資料，但採用的策略不同，例如:
+		Memeber member = session.get(Member.class,pk);
+		Memeber member = session.load(Member.class,pk);
+		第一個參數代表要讀取之資料物件的類別，第二個參數表示主鍵值
+
+	load()方法取得的資料是一個代理物件，其只有Id值而無其他資料，直到程式真正要使用永續物件的屬性時(例如toString())才真正對資料庫下達SQL指令，此機制稱為延遲加載Lazy-Loading
+	get()方法會直接讀取資料庫內的資料，傳回要讀取的永續物件，若該資料不存在，則回傳null
+
+		
+
+<h1>Hibernate的CRUD</h1>
+<h3>flush()</h3>
+<h6>沖洗</h6>
+同步目前永續物件和資料庫資料
+以下狀況會自動執行flush方法
+<ol>
+<li>當交易執行commit()以前</li>
+<li>執行查詢語句以前</li>
+</ol>
+
 
 
