@@ -1,6 +1,17 @@
 package tw.hibernatedemo.model;
 
 public class CompanyBean {
+	
+	/*SQL語法
+	 * CREATE DATABASE hibernateDB
+	 * USE hibernateDB
+	 * 
+	 * CREATE TABLE company(
+	 * companyId INT PRIMARY KEY NOT NULL,
+	 * companyName nvarchar(50) NOT NULL,
+	 * )
+	 * 
+	 */
 	private int companyId;
 	private String companyName;
 
@@ -8,7 +19,6 @@ public class CompanyBean {
 	}
 
 	public CompanyBean(int companyId, String companyName) {
-		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
 	}
