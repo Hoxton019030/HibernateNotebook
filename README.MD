@@ -59,6 +59,7 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
 	.
 	.
 	<mapping class ="...model.yourClassName"/>
+	EX:<mapping class="tw.hibernatedemo.model.Department" />
 	.
 	.
 	.

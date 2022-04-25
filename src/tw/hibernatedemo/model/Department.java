@@ -10,6 +10,16 @@ import javax.persistence.Table;
 @Entity  //宣告在JavaClass上方，註明此類別是PersistentClass，且有對應Table
 @Table(name="department") // 宣告在JavaClass上方，註明此PersitsteantClass對應資料庫內的Table名稱(資料表名稱建議全小寫)
 public class Department {
+	/*
+	 * 
+	 * CREATE TABLE department(
+depid INT PRIMARY KEY IDENTITY(1,1),
+deptname NVARCHAR(50) NOT NULL,
+)
+	 * 
+	 * 
+	 * 
+	 */
 	//必須要有空的建構子
 	public Department() {
 	}
