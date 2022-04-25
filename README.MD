@@ -5,7 +5,8 @@ STEP2 在Eclipse裡建立相關的Bean物件
 
 STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry/hibernate/model/CompanyBean.hbm.xml"/>，然後再編寫相對應的xxx.hbm.xml
 	(1)編寫相對應的xxx.hbm.xml (與Persistent Class放置在相同目錄)(較老專案)
-//*****************************************************************************
+
+*****************************************************************************
 	<?xml version="1.0" encoding="UTF-8"?>
 	
 
@@ -22,7 +23,7 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
         	</property>
 	    </class>
 	</hibernate-mapping>
-//*****************************************************************************
+*****************************************************************************
 
 這樣hibernate啟動時，會先去讀取hibernate.cfg.xml，並通過<mapping>去檢查JAVA物件之間的對應關係
 
@@ -31,7 +32,7 @@ STEP3 到hibernate.cfg.xml註冊對應關係，例如<mapping resource="tw/jerry
  		寫在JavaBean裡面
 		必須要有無參建構子
 		
-	(3)利用JPA，直接定義在JAVA裡(推薦使用) 可以參考 tw.hibernatedemo.model.department
+	(3)利用JPA，直接定義在JAVA裡(推薦使用) ※可以參考 tw.hibernatedemo.model.department
 		@Entity:宣告在JavaClass上方，註明此類別是PersistentClass，且有對應Table
 		@Table(name="資料表名稱"):宣告在JavaClass上方，註明此PersitsteantClass對應資料庫內的Table名稱(資料表名稱建議全小寫)
 		@Id:宣告在屬性(FieldAccess)，註明此屬性對應的PRIMARY KEY欄位
@@ -71,5 +72,32 @@ Step4 程式裡這樣撰寫
 	StandardServiceRegistry serviceRegistry=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 	SesssionFactory factory =new MetadataSource(serviceRegistry).buildMetadata().buildSessionFactory();
 
+
+
+
+*****************************************************************************
+
+SesssionFactory功能　 ※參考tw.hibernatedemo.util.HibernateUtil
+
+	-封裝了Hibernate的執行環境
+	-【1】個資料庫對應【1】個hibernate.cfg.xml設定檔
+		【1】個hibernate.cfg.xml設定檔對應【1】個SesssionFactory物件
+	-重量級物件，非常耗資源
+	-通常會建一個Factory來控管它
+【openSession()】
+	-openSession()方法每次執行時都會得到一個全新的Session物件
+		-不需要任何組態檔就可以使用openSession()方法 
+		-會有兩次截然不同的連線，有可能會出錯，所以應該要用session.getCurrentSession()
+【session.getCurrentSession()】
+	-session.getCurrentSession()方法會開啟一個全新的session物件，然後此session物件會綁定在hibernate控管的環境中
+		接下來每次執行getCurrentSession()會得到同一個session物件，由於交易都需要在同一個Session，因此當程式的交易橫跨多個DAO時，一定要用這個方法來取得session物件
+	-當程式執行commit()或rollback()方法讓交易結束後，會自動關閉session物件
+	-hibernate.cfg.xml內必須設置
+		<property name="current_session_context_class">thread</property>
+		否則程式會丟出 No CurrentSessionContext configured的錯誤訊息
+
+	
+
+	
 
 
